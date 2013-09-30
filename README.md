@@ -1,4 +1,4 @@
-Too-Many-Mods
+Too Many Mods
 =============
 
-a mod that adds tutorials
+Is a mod that adds tutorials, more info here later!
