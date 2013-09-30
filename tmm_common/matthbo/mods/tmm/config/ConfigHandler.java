@@ -2,6 +2,7 @@ package matthbo.mods.tmm.config;
 
 import java.io.File;
 
+import matthbo.mods.tmm.lib.ItemRef;
 import net.minecraftforge.common.Configuration;
 
 public class ConfigHandler {
@@ -11,7 +12,7 @@ public class ConfigHandler {
 		
 		config.load();
 		
-		//blocks / items go here (lolz_ID = ...)
+		ItemRef.vanillaManual_ID = config.getItem("Books", ItemRef.vanillaManual_KEY, ItemRef.vanillaManual_DEFAULT).getInt();
 		
 		config.save();
 	}

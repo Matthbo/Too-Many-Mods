@@ -1,6 +1,7 @@
 package matthbo.mods.tmm;
 
 import matthbo.mods.tmm.config.ConfigHandler;
+import matthbo.mods.tmm.item.Items;
 import matthbo.mods.tmm.lib.Reference;
 import matthbo.mods.tmm.network.TMMPacketHandler;
 import cpw.mods.fml.common.Mod;
@@ -30,6 +31,10 @@ public class TooManyMods {
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent event){
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
+		
+		Items.PreInit();
+		
+		Items.Init();
 		
 	}
 	
