@@ -19,7 +19,7 @@ public class TooManyMods {
 	
 	/* TODO
 	 * 
-	 * Make a vanilla wiki book
+	 * Make the vanilla wiki book work
 	 */
 
 	@Instance(Reference.MOD_ID)
@@ -33,6 +33,8 @@ public class TooManyMods {
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		
 		Items.PreInit();
+		
+		// TODO Creative Tab here!!
 		
 		Items.Init();
 		
