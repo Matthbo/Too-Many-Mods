@@ -1,6 +1,8 @@
 package matthbo.mods.tmm;
 
+import net.minecraft.creativetab.CreativeTabs;
 import matthbo.mods.tmm.config.ConfigHandler;
+import matthbo.mods.tmm.gui.TMMTCreativeTab;
 import matthbo.mods.tmm.item.Items;
 import matthbo.mods.tmm.lib.Reference;
 import matthbo.mods.tmm.network.TMMPacketHandler;
@@ -28,13 +30,16 @@ public class TooManyMods {
 	@SidedProxy(clientSide="matthbo.mods.tmm.client.ClientProxy", serverSide="matthbo.mods.tmm.CommonProxy")
 	public static CommonProxy proxy;
 	
+	public static CreativeTabs TMMTab;
+	
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent event){
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		
 		Items.PreInit();
 		
-		// TODO Creative Tab here!!
+		TMMTab = new TMMTCreativeTab(CreativeTabs.getNextID(), Items.vanillaManual.itemID, "TMMTab", "Too Many Mods");
+		
 		
 		Items.Init();
 		
