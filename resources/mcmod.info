@@ -1,0 +1,17 @@
+[
+{
+  "modid": "TMM",
+  "name": "Too Many Mods",
+  "description": "An in-game wiki!",
+  "version": "0.01.1",
+  "mcversion": "1.7.0",
+  "logoFile": "",
+  "url": "https://github.com/Matthbo/Too-Many-Mods",
+  "updateUrl": "",
+  "authors": ["Matthbo"],
+  "credits": "Made By Matthbo",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
