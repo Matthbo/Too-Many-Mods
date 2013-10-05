@@ -3,6 +3,7 @@ package matthbo.mods.tmm.util;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ConcurrentHashMap;
 
+import matthbo.mods.tmm.config.ConfigHandler;
 import matthbo.mods.tmm.item.Items;
 import matthbo.mods.tmm.lib.tools.AbilityHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,28 +24,32 @@ public class PlayerHandler implements IPlayerTracker{
 	public void onPlayerLogin(EntityPlayer entityplayer) {
 		
 		NBTTagCompound tags = entityplayer.getEntityData();
-        if (!tags.hasKey("TMM")){
+        if (!tags.hasKey("TMM"))
+        {
             tags.setCompoundTag("TMM", new NBTTagCompound());
         }
-        
         PlayerStats stats = new PlayerStats();
         stats.player = new WeakReference<EntityPlayer>(entityplayer);
+
         stats.vanillaManual = tags.getCompoundTag("TMM").getBoolean("vanillaManual");
         
-        if(!stats.vanillaManual){
-        	stats.vanillaManual = true;
-            tags.getCompoundTag("TMM").setBoolean("beginnerManual", true);
-            
-            //maby toggle if you want vanilla book?
-            
-            ItemStack wiki = new ItemStack(Items.vanillaManual);
-            if (!entityplayer.inventory.addItemStackToInventory(wiki))
+        if (!stats.vanillaManual)
+        {
+            stats.vanillaManual = true;
+            tags.getCompoundTag("TMM").setBoolean("vanillaManual", true);
+            if (ConfigHandler.vanillaManual)
             {
-                AbilityHelper.spawnItemAtPlayer(entityplayer, wiki);
+                ItemStack diary = new ItemStack(Items.vanillaManual);
+                if (!entityplayer.inventory.addItemStackToInventory(diary))
+                {
+                    AbilityHelper.spawnItemAtPlayer(entityplayer, diary);
+                }
             }
         }
+
         playerStats.put(entityplayer.username, stats);
-	}
+        updatePlayerInventory(entityplayer, stats);
+    }
 
 	@Override
 	public void onPlayerLogout(EntityPlayer player) {
@@ -53,12 +58,13 @@ public class PlayerHandler implements IPlayerTracker{
 
 	@Override
 	public void onPlayerChangedDimension(EntityPlayer player) {
-		
+		savePlayerStats(player, false);
 	}
 
 	@Override
 	public void onPlayerRespawn(EntityPlayer player) {
-		
+		PlayerStats stats = getPlayerStats(player.username);
+        stats.player = new WeakReference<EntityPlayer>(player);
 	}
 	
 	public PlayerStats getPlayerStats (String username)
@@ -71,13 +77,21 @@ public class PlayerHandler implements IPlayerTracker{
         return stats;
     }
 	
-	public void savePlayerStats (EntityPlayer player, boolean clean)
+	void savePlayerStats (EntityPlayer player, boolean clean)
     {
         if (player != null){
             PlayerStats stats = getPlayerStats(player.username);
-            if (clean) playerStats.remove(player.username);
+            if (stats != null){
+            	if (clean) playerStats.remove(player.username);
+            }
             else{}
+            
         }
+    }
+	
+	void updatePlayerInventory (EntityPlayer entityplayer, PlayerStats stats)
+    {
+
     }
 
 }
