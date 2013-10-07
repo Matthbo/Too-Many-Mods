@@ -24,8 +24,9 @@ public class TooManyMods {
 	
 	/* TODO
 	 * 
-	 * Make the vanilla wiki book work
-	 * fix spawn of vanilla book!!!!
+	 * Make the vanilla wiki book work:
+	 *  - make the book gui
+	 *  - get miki in it
 	 */
 
 	@Instance(Reference.MOD_ID)
