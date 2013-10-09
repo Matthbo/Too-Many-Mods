@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<book>
+<page type="intro">
+<text>Minecraft Wiki
+A Guide to Minecraft in your pocket
+
+By Matthbo</text>
+</page>
+
+<page type="contents">
+<text>Contents:</text>
+<link>
+ <text>Mechanics</text>
+</link>
+<link>
+ <text>Dimensions</text>
+</link>
+<link>
+ <text>Modifications</text>
+</link>
+<text>More comming soon...</text>
+</page>
+
+</book>
