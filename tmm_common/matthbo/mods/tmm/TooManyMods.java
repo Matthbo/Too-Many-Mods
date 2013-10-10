@@ -30,10 +30,11 @@ public class TooManyMods {
 	/* TODO
 	 * 
 	 * Make the vanilla wiki book work:
+	 *  ! make pageclasses(see tconstruct.client.TProxyClient.initManualPages())
 	 *  - make the book gui
 	 *  - get wiki in it
 	 *  
-	 *  Make a in-game message (if in dev version)
+	 *  Make a in-game message (if in dev version!!!)
 	 */
 
 	@Instance(Reference.MOD_ID)

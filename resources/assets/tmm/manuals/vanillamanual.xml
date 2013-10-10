@@ -9,17 +9,20 @@ By Matthbo</text>
 </page>
 
 <page type="contents">
-<text>Contents:</text>
-<link>
- <text>Mechanics</text>
-</link>
-<link>
- <text>Dimensions</text>
-</link>
-<link>
- <text>Modifications</text>
-</link>
-<text>More comming soon...</text>
+<text>Content:
+
+    * Mechanics
+    * Dimensions
+    * Modifications
+
+More comming soon...</text>
+</page>
+
+<page type="text">
+<text>Mechanics:
+
+Not build yet...
+Retry later... maybe...</text>
 </page>
 
 </book>

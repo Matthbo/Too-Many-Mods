@@ -9,10 +9,15 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import matthbo.mods.tmm.CommonProxy;
 import matthbo.mods.tmm.TooManyMods;
+import matthbo.mods.tmm.client.font.SmallFontRenderer;
 import matthbo.mods.tmm.client.gui.GuiManual;
+import matthbo.mods.tmm.client.pages.BlankPage;
 import matthbo.mods.tmm.client.pages.BookPage;
+import matthbo.mods.tmm.client.pages.TextPage;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.w3c.dom.Document;
@@ -23,6 +28,8 @@ public class ClientProxy extends CommonProxy {
 
 	public static Map<String, Class<? extends BookPage>> pageClasses = new HashMap<String, Class<? extends BookPage>>();
 
+	public static SmallFontRenderer smallFontRenderer;
+	
 	@Override
 	public void initSounds() {
 		// init all sounds
@@ -30,7 +37,9 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void initRenderers() {
-
+		 Minecraft mc = Minecraft.getMinecraft();
+		 
+		smallFontRenderer = new SmallFontRenderer(mc.gameSettings, new ResourceLocation("textures/font/ascii.png"), mc.renderEngine, false);
 	}
 
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -41,14 +50,12 @@ public class ClientProxy extends CommonProxy {
 		return null;
 	}
 
-	public static Class<? extends BookPage> getPageClass(String type) {
-		return pageClasses.get(type);
-	}
-
 	public void readManuals() {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 
 		vanillaManual = readManual("/assets/tmm/manuals/vanillamanual.xml", dbFactory);
+		
+		initManualPages();
 	}
 
 	Document readManual(String location, DocumentBuilderFactory dbFactory) {
@@ -63,4 +70,23 @@ public class ClientProxy extends CommonProxy {
 			return null;
 		}
 	}
+
+    public static void registerManualPage (String type, Class<? extends BookPage> clazz)
+    {
+        pageClasses.put(type, clazz);
+    }
+
+    public static Class<? extends BookPage> getPageClass (String type)
+    {
+        return pageClasses.get(type);
+    }
+	
+	void initManualPages (){
+		this.registerManualPage("blank", BlankPage.class);
+		this.registerManualPage("text", TextPage.class);
+		this.registerManualPage("intro", TextPage.class);
+		this.registerManualPage("contents", TextPage.class);
+		
+	}
+	
 }

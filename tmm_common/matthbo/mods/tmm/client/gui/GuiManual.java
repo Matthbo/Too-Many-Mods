@@ -1,6 +1,7 @@
 package matthbo.mods.tmm.client.gui;
 
 import matthbo.mods.tmm.client.ClientProxy;
+import matthbo.mods.tmm.client.font.SmallFontRenderer;
 import matthbo.mods.tmm.client.pages.BookPage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -34,6 +35,8 @@ public class GuiManual extends GuiScreen {
 	BookPage pageLeft;
 	BookPage pageRight;
 
+	public SmallFontRenderer fonts = ClientProxy.smallFontRenderer;
+	
 	public GuiManual(ItemStack stack, Document doc) {
 		this.mc = Minecraft.getMinecraft();
 		this.itemstackBook = stack;
