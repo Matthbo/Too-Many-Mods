@@ -8,6 +8,7 @@ import matthbo.mods.tmm.gui.TMMTCreativeTab;
 import matthbo.mods.tmm.item.Items;
 import matthbo.mods.tmm.lib.Reference;
 import matthbo.mods.tmm.network.TMMPacketHandler;
+import matthbo.mods.tmm.util.CraftingHandler;
 import matthbo.mods.tmm.util.PlayerHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,8 +31,7 @@ public class TooManyMods {
 	/* TODO
 	 * 
 	 * Make the vanilla wiki book work:
-	 *  ! make pageclasses(see tconstruct.client.TProxyClient.initManualPages())
-	 *  - make the book gui
+	 *  - make pageclasses(see tconstruct.client.TProxyClient.initManualPages())
 	 *  - get wiki in it
 	 *  
 	 *  Make a in-game message (if in dev version!!!)
@@ -55,6 +55,7 @@ public class TooManyMods {
 	public static CreativeTabs TMMTab;
 	
 	public static PlayerHandler playerTracker;
+	public static CraftingHandler craftingHandler;
 	
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent event){
@@ -81,6 +82,9 @@ public class TooManyMods {
 	public void Init(FMLInitializationEvent event){
 		
 		NetworkRegistry.instance().registerConnectionHandler(new CommandHandler());
+		
+		craftingHandler = new CraftingHandler();
+		GameRegistry.registerCraftingHandler(craftingHandler);
 		
 	}
 	
