@@ -25,6 +25,7 @@ import org.w3c.dom.Document;
 public class ClientProxy extends CommonProxy {
 
 	public static Document vanillaManual;
+	public static Document magilutionManual;
 
 	public static Map<String, Class<? extends BookPage>> pageClasses = new HashMap<String, Class<? extends BookPage>>();
 
@@ -42,6 +43,7 @@ public class ClientProxy extends CommonProxy {
 		smallFontRenderer = new SmallFontRenderer(mc.gameSettings, new ResourceLocation("textures/font/ascii.png"), mc.renderEngine, false);
 	}
 
+	//Does not work!!
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if (ID == manualGuiID) {
 			ItemStack stack = player.getCurrentEquippedItem();
@@ -53,7 +55,8 @@ public class ClientProxy extends CommonProxy {
 	public void readManuals() {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 
-		vanillaManual = readManual("/assets/tmm/manuals/vanillamanual.xml", dbFactory);
+		vanillaManual = readManual("/assets/tmm/manuals/vanillaManual.xml", dbFactory);
+		magilutionManual = readManual("/assets/tmm/manuals/magilutionManual.xml", dbFactory);
 		
 		initManualPages();
 	}

@@ -15,6 +15,7 @@ public class ConfigHandler {
 		config.load();
 		
 		ItemRef.vanillaManual_ID = config.getItem("Books", ItemRef.vanillaManual_KEY, ItemRef.vanillaManual_DEFAULT).getInt();
+		ItemRef.magilutionManual_ID = config.getItem("Books", ItemRef.magilutionManual_KEY, ItemRef.magilution_DEFAULT).getInt();
 		
 		vanillaManual = config.get("Books Spawns", "Vanilla Wiki", true).getBoolean(true);
 		

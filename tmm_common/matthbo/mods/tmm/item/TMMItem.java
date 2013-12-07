@@ -33,8 +33,10 @@ public class TMMItem extends Item {
 		if (this.itemID == ItemRef.vanillaManual_ID) {
 			Side side = FMLCommonHandler.instance().getEffectiveSide();
 			if (side.isClient()) FMLClientHandler.instance().displayGuiScreen(player, new GuiManual(player.getCurrentEquippedItem(), ClientProxy.vanillaManual));
-
-			//player.openGui(TooManyMods.instance, TooManyMods.proxy.manualGuiID, world, 0, 0, 0);
+		}
+		if(this.itemID == ItemRef.magilutionManual_ID){
+			Side side = FMLCommonHandler.instance().getEffectiveSide();
+			if (side.isClient()) FMLClientHandler.instance().displayGuiScreen(player, new GuiManual(player.getCurrentEquippedItem(), ClientProxy.magilutionManual));
 		}
 		return stack;
 	}

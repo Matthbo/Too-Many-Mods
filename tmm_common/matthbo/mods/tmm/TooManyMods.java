@@ -2,6 +2,7 @@ package matthbo.mods.tmm;
 
 import org.lwjgl.Sys;
 
+import matthbo.mods.magilution.api.item.MagilutionItems;
 import matthbo.mods.tmm.command.CommandHandler;
 import matthbo.mods.tmm.config.ConfigHandler;
 import matthbo.mods.tmm.gui.TMMTCreativeTab;
@@ -16,6 +17,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Mod.Item;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
